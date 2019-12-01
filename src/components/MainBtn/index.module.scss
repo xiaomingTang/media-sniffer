@@ -1,0 +1,14 @@
+.inner-box {
+  display: inline-block;
+  padding-left: .5em;
+  max-width: 10em;
+  vertical-align: text-bottom;
+  overflow: hidden;
+  text-align: center;
+  transition: max-width .5s, padding-left .5s;
+}
+
+.inactive {
+  padding-left: 0;
+  max-width: 0;
+}

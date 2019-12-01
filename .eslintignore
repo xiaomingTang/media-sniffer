@@ -1,0 +1,9 @@
+**/*.ts
+**/*.js
+**/*.tsx
+**/*.jsx
+!/src/**/*.ts
+!/src/**/*.js
+!/src/**/*.tsx
+!/src/**/*.jsx
+*.d.ts

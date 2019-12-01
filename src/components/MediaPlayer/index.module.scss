@@ -1,0 +1,49 @@
+.img-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 2px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.img-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: transform .5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.img-header {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: .8em;
+  background-color: rgba(0, 0, 0, .6);
+  color: white;
+}
+
+.img-header-link {
+  display: block;
+  height: 100%;
+  padding-bottom: 2px;
+  color: white;
+  &:hover {
+    color: #dddddd;
+  }
+  &:visited {
+    color: #dddddd;
+  }
+}
