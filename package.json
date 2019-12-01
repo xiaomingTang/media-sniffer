@@ -75,5 +75,5 @@
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "description": "tampermonkey + react + typescript, built-in functions available"
+  "description": "搜寻当前页面图片、音乐、视频资源的油猴脚本"
 }
