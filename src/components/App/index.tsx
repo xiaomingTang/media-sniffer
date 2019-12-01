@@ -10,6 +10,15 @@ import Styles from "./index.module.scss"
 
 const { Panel } = Collapse
 
+function calcFrameLevel(frameWindow: Window, n = 1): number {
+  if (frameWindow === frameWindow.top) {
+    return n
+  }
+  return calcFrameLevel(frameWindow.parent, n + 1)
+}
+
+const frameLevel = calcFrameLevel(window)
+
 export default function App() {
   const [srcMap, setSrcList] = useState(geneDefaultSrcs())
   const [poperVisible, setPoperVisible] = useState(false)
@@ -29,6 +38,7 @@ export default function App() {
 
       <MainBtn
         className={Styles.mainBtn}
+        style={{ right: `${frameLevel * 2 + 0.5}em` }}
         content="嗅一嗅"
         icon="search"
         delay={700}
