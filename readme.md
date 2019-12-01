@@ -6,7 +6,7 @@
 ![脚本截图](./dist/static/assets/screenshot-1.png)
 
 ### 项目特点
-- 基于[template-react-tampermonkey](https://github.com/xiaomingTang/template-react-tampermonkey)开发, 用户可自由配置
+- 基于[template-react-tampermonkey](https://github.com/xiaomingTang/template-react-tampermonkey)开发, 可二次开发
 
 ### warning
 - 注意, 图片/视频下载功能是调用的GM_download, 由于浏览器响应问题, 可能有时候点击下载却没反应, 是正常的, 不愿意等的可以点击标题在新页面打开并下载
