@@ -6,6 +6,7 @@ import MainBtn from "@Comps/MainBtn"
 import { Poper } from "@Comps/Poper"
 import { ImgPlayer, AudioPlayer, VideoPlayer } from "@Comps/MediaPlayer"
 import { sniffAll, geneDefaultSrcs } from "@Utils/sniff"
+import { isProduction } from "@Src/global"
 import Styles from "./index.module.scss"
 
 const { Panel } = Collapse
@@ -32,9 +33,15 @@ export default function App() {
 
   return (
     <>
-      <audio style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/音乐.mp3" />
-      <video style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/视频.mp4" />
-      <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片.jpg" alt=""/>
+      {
+        (() => (
+          !isProduction && (<>
+            <audio style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/音乐.mp3" />
+            <video style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/视频.mp4" />
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片.jpg" alt=""/>
+          </>)
+        ))()
+      }
 
       <MainBtn
         className={Styles.mainBtn}
