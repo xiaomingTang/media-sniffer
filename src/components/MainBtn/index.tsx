@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useEffect, useCallback } from "react"
 import { Button } from "antd"
 import { ButtonProps } from "antd/lib/button"
+import { useTenaciousDuck } from "use-ducks"
 
 import Styles from "./index.module.scss"
 
@@ -13,48 +14,27 @@ interface Props extends ButtonProps {
 export default function MainBtn({
   content, delay = 3000, icon = "menu", ...props
 }: Props) {
-  const [active, setActive] = useState(true)
-  const [isHover, setIsHover] = useState(false)
-  const [timer, setTimer] = useState(-1)
-
-  const clearTimer = useCallback(() => {
-    if (timer !== -1) {
-      clearTimeout(timer)
-      setTimer(-1)
-    }
-  }, [timer])
+  const [isDying, awake, kill] = useTenaciousDuck(delay)
 
   const onEnter = useCallback(() => {
-    setIsHover(true)
-  }, [])
+    awake()
+  }, [awake])
 
   const onLeave = useCallback(() => {
-    setIsHover(false)
-  }, [])
+    kill()
+  }, [kill])
 
-  useEffect(() => {
-    if (!active && isHover) {
-      clearTimer()
-      setActive(true)
-    }
-    if (active && !isHover && (timer === -1)) {
-      const t = window.setTimeout(() => {
-        clearTimer()
-        setActive(false)
-      }, delay)
-      setTimer(t)
-    }
-  }, [active, isHover, delay, timer, clearTimer])
+  useEffect(kill, [])
 
   return <Button
     {...props}
     type="primary"
-    shape={active ? undefined : "circle"}
+    shape={isDying ? "circle" : undefined}
     icon={icon}
     onMouseEnter={() => onEnter()}
     onMouseLeave={() => onLeave()}
   >
-    <div className={`${active ? "" : Styles.inactive} ${Styles.innerBox}`}>
+    <div className={`${isDying ? Styles.inactive : ""} ${Styles.innerBox}`}>
       {content}
     </div>
   </Button>

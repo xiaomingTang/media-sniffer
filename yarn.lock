@@ -7365,17 +7365,6 @@ react-slick@~0.25.2:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react-soundplayer@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npm.taobao.org/react-soundplayer/download/react-soundplayer-1.0.4.tgz#333b0edc41694a3f883117898d962af061bb8d3f"
-  integrity sha1-MzsO3EFpSj+IMReJjZYq8GG7jT8=
-  dependencies:
-    classnames "^2.2.5"
-    hoist-non-react-statics "^2.3.1"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-    soundcloud-audio "^1.2.2"
-
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.npm.taobao.org/react/download/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
@@ -8086,11 +8075,6 @@ sockjs@0.3.19:
   dependencies:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
-
-soundcloud-audio@^1.2.2:
-  version "1.4.0"
-  resolved "https://registry.npm.taobao.org/soundcloud-audio/download/soundcloud-audio-1.4.0.tgz#2d9ceeaa8a3c63d814e18c4c2602fe3be9a99655"
-  integrity sha1-LZzuqoo8Y9gU4YxMJgL+O+mpllU=
 
 source-list-map@^2.0.0:
   version "2.0.1"
@@ -8941,6 +8925,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-ducks@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/use-ducks/download/use-ducks-1.0.0.tgz?cache=0&sync_timestamp=1575303751503&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuse-ducks%2Fdownload%2Fuse-ducks-1.0.0.tgz#22da73666bf6632523ae88244c2b91bd0e1a8d89"
+  integrity sha1-ItpzZmv2YyUjrogkTCuRvQ4ajYk=
 
 use@^3.1.0:
   version "3.1.1"

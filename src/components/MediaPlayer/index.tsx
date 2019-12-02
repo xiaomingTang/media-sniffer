@@ -22,11 +22,11 @@ interface VideoProps extends React.ImgHTMLAttributes<HTMLVideoElement> {
   src: string;
 }
 
-export function ImgPlayer({ src, className, ...props }: ImgProps) {
+export function ImgPlayer({ src, ...props }: ImgProps) {
   const { size } = useCheckImgInfo(src)
   const assetName = parseAssetName(src)
 
-  return <div className={`${Styles.imgWrapper} ${className}`} {...props}>
+  return <div className={Styles.imgWrapper} {...props}>
     <img src={src} className={Styles.img} title={`保存 [${assetName}]`} onClick={() => {
       if (!isProduction) {
         message.error("测试环境没有内置GM_函数")
