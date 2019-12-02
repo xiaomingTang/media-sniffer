@@ -32,9 +32,9 @@ export default function App() {
 
   return (
     <>
-      {/* <audio style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/音乐.mp3" />
+      <audio style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/音乐.mp3" />
       <video style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/视频.mp4" />
-      <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片.jpg" alt=""/> */}
+      <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片.jpg" alt=""/>
 
       <MainBtn
         className={Styles.mainBtn}

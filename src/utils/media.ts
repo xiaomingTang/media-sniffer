@@ -16,33 +16,33 @@ export const defaultSize: Size = { width: 0, height: 0 }
  */
 export function useCheckImgInfo(src: string) {
   const [size, setSize] = useState<Size>(defaultSize)
-  let img = new Image()
-  function onLoad() {
-    setSize({ width: img.width, height: img.height })
-    img.removeEventListener("load", onLoad)
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    img.removeEventListener("error", onError)
-    // @ts-ignore
-    img = null
-  }
-  function onError() {
-    setSize({ width: -1, height: -1 })
-    img.removeEventListener("load", onLoad)
-    img.removeEventListener("error", onError)
-    // @ts-ignore
-    img = null
-  }
   useEffect(() => {
+    let img = new Image()
+    function onLoad() {
+      setSize({ width: img.width, height: img.height })
+      img.removeEventListener("load", onLoad)
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      img.removeEventListener("error", onError)
+      // @ts-ignore
+      img = null
+    }
+    function onError() {
+      setSize({ width: -1, height: -1 })
+      img.removeEventListener("load", onLoad)
+      img.removeEventListener("error", onError)
+      // @ts-ignore
+      img = null
+    }
     img.addEventListener("load", onLoad)
     img.addEventListener("error", onError)
+    img.src = src
     return () => {
       if (img) {
         img.removeEventListener("load", onLoad)
         img.removeEventListener("error", onError)
       }
     }
-  })
-  img.src = src
+  }, [src])
   return { size }
 }
 
