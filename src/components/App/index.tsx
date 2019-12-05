@@ -72,21 +72,6 @@ export default function App() {
 
       <Poper state={[poperVisible, setPoperVisible]}>
         <>
-          {
-            isDying && <Button
-              type="default"
-              shape="circle"
-              icon="sync"
-              title="再找找看"
-              style={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                transform: "translate(-50%, -50%)",
-              }}
-              onClick={updateAssets}
-            />
-          }
           <Collapse
             defaultActiveKey={[
               audioLen > 0 ? "audios" : "",
@@ -118,6 +103,21 @@ export default function App() {
               />
             </Panel>
           </Collapse>
+          {
+            isDying && <Button
+              type="default"
+              shape="circle"
+              icon="sync"
+              title="再找找看"
+              style={{
+                position: "fixed",
+                left: 0,
+                top: 0,
+                transform: "translate(-50%, -50%)",
+              }}
+              onClick={updateAssets}
+            />
+          }
         </>
       </Poper>
     </>
