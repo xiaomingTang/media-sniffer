@@ -27,15 +27,23 @@ export function ImgPlayer({ src, onClick, ...props }: ImgProps) {
   const assetName = parseAssetName(src)
 
   return <div className={Styles.imgWrapper} {...props}>
-    <img src={src} className={Styles.img} title={`保存 [${assetName}]`} onClick={onClick} />
-    <Button className={Styles.downloadBtn} size="small" type="default" icon="download" shape="circle" onClick={() => {
-      if (!isProduction) {
-        message.error("测试环境没有内置GM_函数")
-        return
-      }
-      // eslint-disable-next-line no-undef
-      GM_download(src, assetName)
-    }} />
+    <img className={Styles.img} src={src} title="点击可缩放" alt={assetName} onClick={onClick} />
+    <Button
+      className={Styles.downloadBtn}
+      title={`保存 [${assetName}]`}
+      size="small"
+      type="default"
+      icon="download"
+      shape="circle"
+      onClick={() => {
+        if (!isProduction) {
+          message.error("测试环境没有内置GM_函数")
+          return
+        }
+        // eslint-disable-next-line no-undef
+        GM_download(src, assetName)
+      }}
+    />
     <div className={Styles.imgHeader}>
       {
         (() => {
