@@ -26,7 +26,7 @@ export default function App() {
   const [srcMap, setSrcList] = useState(geneDefaultSrcs())
   const [poperVisible, setPoperVisible] = useState(false)
   const [isDying, awake] = useDyingDuck(2000)
-  const [curImgIdx, setCurImgIdx] = useState(-1)
+  const [curImgSrc, setCurImgSrc] = useState("")
 
   const audioList = useMemo(() => Object.values(srcMap.audio), [srcMap])
   const videoList = useMemo(() => Object.values(srcMap.video), [srcMap])
@@ -57,7 +57,12 @@ export default function App() {
           !isProduction && (<>
             <audio style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/音乐.mp3" />
             <video style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/视频.mp4" />
-            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片1.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片2.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片3.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片4.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片5.jpg" alt=""/>
+            <img style={{ width: 0, height: 0, overflow: "hidden" }} src="./assets/图片6.jpg" alt=""/>
           </>)
         ))()
       }
@@ -91,15 +96,16 @@ export default function App() {
             </Panel>
             <Panel header={`图片 (${imgLen})`} key="imgs">
               <List
+                style={{
+                  paddingRight: "102px",
+                  paddingBottom: "102px",
+                }}
                 dataSource={imgList}
-                renderItem={(src, i) => (<ImgPlayer src={src} style={curImgIdx === i ? {
-                  width: "204px",
-                  height: "204px",
-                } : {}} onClick={() => {
-                  if (i === curImgIdx) {
-                    setCurImgIdx(-1)
+                renderItem={(src) => (<ImgPlayer src={src} active={curImgSrc === src} onClick={() => {
+                  if (src === curImgSrc) {
+                    setCurImgSrc("")
                   } else {
-                    setCurImgIdx(i)
+                    setCurImgSrc(src)
                   }
                 }} />)}
               />

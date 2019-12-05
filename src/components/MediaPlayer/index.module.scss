@@ -5,8 +5,7 @@
   height: 100px;
   margin: 2px;
   vertical-align: top;
-  transition: width .5s, height .5s;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 4px;
 }
 
@@ -18,12 +17,16 @@
 
 .img {
   display: inline-block;
-  width: 100%;
-  height: 100%;
-  // transition: transform .5s;
-  // &:hover {
-  //   transform: scale(1.1);
-  // }
+  width: 100px;
+  height: 100px;
+  transition: all .5s;
+  background-color: white;
+  &.active {
+    position: absolute;
+    z-index: 10;
+    width: 204px;
+    height: 204px;
+  }
 }
 
 .download-btn {

@@ -7,10 +7,12 @@ import { isProduction } from "@Src/global"
 import {
   useCheckAudioInfo, useCheckImgInfo, useCheckVideoInfo, friendlyTime,
 } from "@Src/utils/media"
+import randomColor from "randomcolor"
 
 import Styles from "./index.module.scss"
 
 interface ImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  active?: boolean;
   src: string;
 }
 
@@ -22,12 +24,23 @@ interface VideoProps extends React.ImgHTMLAttributes<HTMLVideoElement> {
   src: string;
 }
 
-export function ImgPlayer({ src, onClick, ...props }: ImgProps) {
+export function ImgPlayer({
+  active, src, onClick, ...props
+}: ImgProps) {
   const { size } = useCheckImgInfo(src)
   const assetName = parseAssetName(src)
 
   return <div className={Styles.imgWrapper} {...props}>
-    <img className={Styles.img} src={src} title="点击可缩放" alt={assetName} onClick={onClick} />
+    <img
+      className={`${Styles.img} ${active ? Styles.active : ""}`}
+      src={src}
+      title="点击可缩放"
+      alt={assetName}
+      onClick={onClick}
+      style={(active && (size.width <= 0)) ? {
+        backgroundColor: randomColor({ luminosity: "dark" }),
+      } : {}}
+    />
     <Button
       className={Styles.downloadBtn}
       title={`保存 [${assetName}]`}

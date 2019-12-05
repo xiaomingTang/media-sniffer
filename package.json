@@ -17,7 +17,9 @@
     "lint:fix": "eslint src --fix --ext .js --ext .ts --ext .jsx --ext .tsx"
   },
   "dependencies": {
+    "@types/randomcolor": "^0.5.3",
     "antd": "^3.25.3",
+    "randomcolor": "^0.5.4",
     "url-polyfill": "^1.1.7",
     "use-ducks": "^1.0.0"
   },
