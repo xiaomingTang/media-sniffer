@@ -26,6 +26,7 @@ export default function App() {
   const [srcMap, setSrcList] = useState(geneDefaultSrcs())
   const [poperVisible, setPoperVisible] = useState(false)
   const [isDying, awake] = useDyingDuck(2000)
+  const [curImgIdx, setCurImgIdx] = useState(-1)
 
   const audioList = useMemo(() => Object.values(srcMap.audio), [srcMap])
   const videoList = useMemo(() => Object.values(srcMap.video), [srcMap])
@@ -91,7 +92,16 @@ export default function App() {
             <Panel header={`图片 (${imgLen})`} key="imgs">
               <List
                 dataSource={imgList}
-                renderItem={(src) => (<ImgPlayer src={src} />)}
+                renderItem={(src, i) => (<ImgPlayer src={src} style={curImgIdx === i ? {
+                  width: "204px",
+                  height: "204px",
+                } : {}} onClick={() => {
+                  if (i === curImgIdx) {
+                    setCurImgIdx(-1)
+                  } else {
+                    setCurImgIdx(i)
+                  }
+                }} />)}
               />
             </Panel>
             <Panel header={`视频 (${videoLen})`} key="videos">

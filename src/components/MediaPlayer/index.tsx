@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import React from "react"
-import { message } from "antd"
+import { message, Button } from "antd"
 
 import { parseAssetName } from "@Utils/url"
 import { isProduction } from "@Src/global"
@@ -22,12 +22,13 @@ interface VideoProps extends React.ImgHTMLAttributes<HTMLVideoElement> {
   src: string;
 }
 
-export function ImgPlayer({ src, ...props }: ImgProps) {
+export function ImgPlayer({ src, onClick, ...props }: ImgProps) {
   const { size } = useCheckImgInfo(src)
   const assetName = parseAssetName(src)
 
   return <div className={Styles.imgWrapper} {...props}>
-    <img src={src} className={Styles.img} title={`保存 [${assetName}]`} onClick={() => {
+    <img src={src} className={Styles.img} title={`保存 [${assetName}]`} onClick={onClick} />
+    <Button className={Styles.downloadBtn} size="small" type="default" icon="download" shape="circle" onClick={() => {
       if (!isProduction) {
         message.error("测试环境没有内置GM_函数")
         return

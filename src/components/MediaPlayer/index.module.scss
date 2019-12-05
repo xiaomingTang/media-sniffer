@@ -4,6 +4,8 @@
   width: 100px;
   height: 100px;
   margin: 2px;
+  vertical-align: top;
+  transition: width .5s, height .5s;
   overflow: hidden;
   border-radius: 4px;
 }
@@ -22,6 +24,12 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.download-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .img-header {
